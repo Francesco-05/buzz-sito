@@ -1,10 +1,13 @@
+/* Moduli "Lavora con noi": cambio tra le due schede dei contatti e invio della candidatura.
+   Logica identica alla versione online del 25/09/2026, resa leggibile. */
 (() => {
   'use strict';
   const section = document.querySelector('[data-contact-section]');
   if (!section || section.dataset.pathwayBound) return;
   section.dataset.pathwayBound = 'true';
   const tabs = [...section.querySelectorAll('[data-contact-mode]')];
-  const modeFromUrl = () => new URLSearchParams(location.search).get('percorso') === 'lavora-con-noi' ? 'careers' : 'brand';
+  const modeFromUrl = () =>
+    new URLSearchParams(location.search).get('percorso') === 'lavora-con-noi' ? 'careers' : 'brand';
   function activate(mode, updateUrl = false) {
     for (const tab of tabs) {
       const selected = tab.dataset.contactMode === mode;
@@ -25,7 +28,7 @@
   }
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => activate(tab.dataset.contactMode, true));
-    tab.addEventListener('keydown', event => {
+    tab.addEventListener('keydown', (event) => {
       let target;
       if (event.key === 'ArrowRight') target = (index + 1) % tabs.length;
       if (event.key === 'ArrowLeft') target = (index + tabs.length - 1) % tabs.length;
@@ -37,18 +40,26 @@
       tabs[target].focus({ preventScroll: true });
     });
   });
-  document.addEventListener('click', event => {
-    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  document.addEventListener('click', (event) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return;
     const anchor = event.target.closest('a');
     if (!anchor) return;
     if (anchor.hasAttribute('data-careers-link')) {
       event.preventDefault();
       activate('careers', true);
       section.scrollIntoView({ behavior: 'instant', block: 'start' });
-      tabs.find(tab => tab.dataset.contactMode === 'careers').focus({ preventScroll: true });
+      tabs.find((tab) => tab.dataset.contactMode === 'careers').focus({ preventScroll: true });
     } else if (anchor.getAttribute('href') === '#contatti') activate('brand', true);
   });
-  section.querySelectorAll('[data-careers-role]').forEach(button => {
+  section.querySelectorAll('[data-careers-role]').forEach((button) => {
     button.addEventListener('click', () => {
       const role = section.querySelector('[name="role"]');
       role.value = button.dataset.careersRole;
@@ -73,7 +84,8 @@
   let sending = false;
   let pending = null;
   const readFields = () => Object.fromEntries(new FormData(form));
-  const verificationMessage = 'L’invio potrebbe essere già avvenuto. Prima di reinviare, chiedi una verifica a info@buzzstudio.it. I dati restano nel modulo.';
+  const verificationMessage =
+    'L’invio potrebbe essere già avvenuto. Prima di reinviare, chiedi una verifica a info@buzzstudio.it. I dati restano nel modulo.';
   function show(message, kind) {
     const paragraph = document.createElement('p');
     paragraph.className = 'feedback-' + kind;
@@ -89,9 +101,12 @@
   // Native validation is invoked explicitly, so a retry can verify the original
   // submission even if the person has since edited the visible fields.
   form.noValidate = true;
-  form.addEventListener('submit', async event => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (pending?.needsVerification) { show(verificationMessage, 'error'); return; }
+    if (pending?.needsVerification) {
+      show(verificationMessage, 'error');
+      return;
+    }
     if (sending) return;
     normalizePortfolio();
     if (!pending && !form.reportValidity()) return;
@@ -117,19 +132,23 @@
       if (!request.token) {
         const challenge = await fetch(endpoint, { signal: controller.signal, cache: 'no-store' });
         const issued = await challenge.json();
-        if (!challenge.ok || issued.ok !== true || typeof issued.token !== 'string') throw new Error('Careers unavailable');
+        if (!challenge.ok || issued.ok !== true || typeof issued.token !== 'string')
+          throw new Error('Careers unavailable');
         request.token = issued.token;
       }
       posted = true;
       const response = await fetch(endpoint, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...request.fields, startedAt, token: request.token }), signal: controller.signal,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...request.fields, startedAt, token: request.token }),
+        signal: controller.signal,
       });
       const result = await response.json().catch(() => null);
       if (!response.ok || result?.ok !== true) {
         const rejected = response.status >= 400 && response.status < 500;
         const safeToRetry = result?.ok === false && result.safeToRetry === true;
-        if (result?.needsVerification === true || (request.uncertain && rejected && !safeToRetry)) request.needsVerification = true;
+        if (result?.needsVerification === true || (request.uncertain && rejected && !safeToRetry))
+          request.needsVerification = true;
         else if (safeToRetry || (rejected && !request.uncertain)) pending = null;
         if (typeof result?.message === 'string' && result.message.length <= 300) errorMessage = result.message;
         throw new Error('Submission not confirmed');
@@ -139,11 +158,17 @@
         sending = false;
         button.disabled = false;
         label.textContent = 'Invia le modifiche';
-        show('La candidatura iniziale è stata inviata. Le modifiche sono ancora nel modulo e non sono state inviate.', 'notice');
+        show(
+          'La candidatura iniziale è stata inviata. Le modifiche sono ancora nel modulo e non sono state inviate.',
+          'notice',
+        );
       } else {
         form.reset();
         label.textContent = 'Candidatura inviata';
-        show('Grazie! La tua candidatura è stata inviata al team BUZZ. Se il profilo è in linea con la ricerca, ti ricontatteremo.', 'success');
+        show(
+          'Grazie! La tua candidatura è stata inviata al team BUZZ. Se il profilo è in linea con la ricerca, ti ricontatteremo.',
+          'success',
+        );
       }
     } catch {
       if (!posted) pending = null;
@@ -152,7 +177,9 @@
       button.disabled = request.needsVerification;
       label.textContent = request.needsVerification ? 'Invio da verificare' : 'Invia la candidatura';
       show(request.needsVerification ? verificationMessage : errorMessage, 'error');
-    } finally { clearTimeout(timeout); }
+    } finally {
+      clearTimeout(timeout);
+    }
   });
   button.disabled = false;
   button.removeAttribute('aria-disabled');
