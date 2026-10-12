@@ -89,9 +89,15 @@
   /* ---------- Testata, barra di avanzamento ---------- */
   const header = $('[data-header]');
   const progress = $('[data-progress]');
+  const lightSections = $$('[data-tone="light"]');
+  const problemSticky = $('[data-problem] .problem-sticky');
+  // La sezione che sta sotto la testata decide i suoi colori
+  const under = (el) => { const r = el.getBoundingClientRect(); const mid = header.offsetHeight / 2; return r.top <= mid && r.bottom >= mid; };
   tickers.push(() => {
     const y = state.scrollY;
     header.classList.toggle('is-solid', y > 40);
+    header.classList.toggle('is-light', lightSections.some(under));
+    header.classList.toggle('is-violet', !!problemSticky && under(problemSticky) && parseFloat(problemSticky.style.getPropertyValue('--problem-bg') || 0) > .5);
     header.classList.toggle('is-hidden', y > 400 && state.scrollVelocity > 2);
     if (state.scrollVelocity < -2 || y < 400) header.classList.remove('is-hidden');
     const max = document.documentElement.scrollHeight - state.vh;
@@ -279,9 +285,9 @@
       if (r.bottom < 0 || r.top > state.vh) return;
       const p = total > 0 ? clamp(-r.top / total) : 1;
       sticky.style.setProperty('--problem-p', p.toFixed(4));
-      lines.forEach((line, i) => line.style.setProperty('--l', clamp((p - 0.04 - i * 0.17) / 0.18).toFixed(3)));
-      sticky.style.setProperty('--problem-bg', clamp((p - 0.5) / 0.18).toFixed(3));
-      sticky.style.setProperty('--copy', clamp((p - 0.62) / 0.16).toFixed(3));
+      lines.forEach((line, i) => line.style.setProperty('--l', clamp((p + 0.06 - i * 0.14) / 0.16).toFixed(3)));
+      sticky.style.setProperty('--problem-bg', clamp((p - 0.42) / 0.14).toFixed(3));
+      sticky.style.setProperty('--copy', clamp((p - 0.52) / 0.14).toFixed(3));
     });
   }
 

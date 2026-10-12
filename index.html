@@ -22,8 +22,8 @@
   <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="canonical" href="https://www.buzzstudio.it/">
   <link rel="preload" href="/fonts/Anybody-Variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/sito.css?v=2026-10-12b">
-  <script src="/assets/js/sito.js?v=2026-10-12b" defer></script>
+  <link rel="stylesheet" href="/assets/css/sito.css?v=2026-10-12c">
+  <script src="/assets/js/sito.js?v=2026-10-12c" defer></script>
   <script src="/assets/js/contatti.js?v=2026-10-12" defer></script>
   <script src="/assets/js/candidature.js?v=2026-10-12" defer></script>
 </head>
@@ -49,7 +49,8 @@
 
   <header class="site-header" id="inizio" data-header>
     <a href="#inizio" class="brand" aria-label="BUZZ, torna all’inizio">
-      <img src="/brand/wordmark-light.svg" alt="BUZZ — Rise your noise" width="130" height="52">
+      <img class="logo-on-dark" src="/brand/wordmark-light.svg" alt="BUZZ — Rise your noise" width="130" height="52">
+      <img class="logo-on-light" src="/brand/wordmark-dark.svg" alt="" width="130" height="52" aria-hidden="true">
     </a>
     <nav aria-label="Navigazione principale">
       <a href="#metodo">Il metodo</a>
@@ -120,9 +121,9 @@
       <div class="proof-body">
         <p data-reveal>Tre clienti, tre personalità. Il mondo food raccontato attraverso chi lo vive.</p>
         <ol class="client-list" aria-label="Una selezione dei nostri progetti">
-          <li data-reveal><a href="#progetto-01" data-preview="/media/cases/scicchitano.webp"><span class="num">01</span><span class="name">Scicchitano</span><span class="tag">Cucina di mare</span><svg class="ico"><use href="#i-up-right"/></svg></a></li>
-          <li data-reveal><a href="#progetto-02" data-preview="/media/cases/trattoria-more.webp"><span class="num">02</span><span class="name">Trattoria Morè</span><span class="tag">Cucina partenopea</span><svg class="ico"><use href="#i-up-right"/></svg></a></li>
-          <li data-reveal><a href="#progetto-03" data-preview="/media/cases/vincenzo-capuano.webp"><span class="num">03</span><span class="name">Vincenzo Capuano</span><span class="tag">Pizza contemporanea</span><svg class="ico"><use href="#i-up-right"/></svg></a></li>
+          <li data-reveal><a href="#progetto-01" data-preview="/media/cases/scicchitano.webp"><span class="thumb"><img src="/media/cases/scicchitano.webp" alt="" width="720" height="1280" loading="lazy"></span><span class="num">01</span><span class="name">Scicchitano</span><span class="tag">Cucina di mare</span><svg class="ico"><use href="#i-up-right"/></svg></a></li>
+          <li data-reveal><a href="#progetto-02" data-preview="/media/cases/trattoria-more.webp"><span class="thumb"><img src="/media/cases/trattoria-more.webp" alt="" width="720" height="1280" loading="lazy"></span><span class="num">02</span><span class="name">Trattoria Morè</span><span class="tag">Cucina partenopea</span><svg class="ico"><use href="#i-up-right"/></svg></a></li>
+          <li data-reveal><a href="#progetto-03" data-preview="/media/cases/vincenzo-capuano.webp"><span class="thumb"><img src="/media/cases/vincenzo-capuano.webp" alt="" width="720" height="1280" loading="lazy"></span><span class="num">03</span><span class="name">Vincenzo Capuano</span><span class="tag">Pizza contemporanea</span><svg class="ico"><use href="#i-up-right"/></svg></a></li>
         </ol>
       </div>
       <div class="client-preview" aria-hidden="true" data-preview-box><img alt="" width="720" height="1280"></div>
@@ -149,7 +150,7 @@
     </section>
 
     <!-- 03 · COME LAVORIAMO -->
-    <section id="metodo" class="method" aria-labelledby="method-title" data-method>
+    <section id="metodo" class="method" data-tone="light" aria-labelledby="method-title" data-method>
       <div class="method-sticky">
         <div class="method-head shell">
           <div>
@@ -335,7 +336,7 @@
     </section>
 
     <!-- 06 · CONTATTI -->
-    <section id="contatti" class="contact" data-contact-section aria-labelledby="contact-title">
+    <section id="contatti" class="contact" data-tone="light" data-contact-section aria-labelledby="contact-title">
       <div class="shell">
         <div class="contact-switch-row">
           <span class="eyebrow">Il prossimo passo, insieme.</span>
