@@ -133,8 +133,9 @@
       cursor.classList.toggle('is-link', !labelled && !!link);
       label.textContent = labelled ? labelled.dataset.cursor : '';
     });
-    document.addEventListener('pointerleave', () => cursor.classList.add('is-hidden'));
-    document.addEventListener('pointerenter', () => cursor.classList.remove('is-hidden'));
+    // Fuori dalla finestra il cursore sparisce, rientrando ricompare
+    root.addEventListener('mouseleave', () => cursor.classList.add('is-hidden'));
+    root.addEventListener('mouseenter', () => { if (state.pointerSeen) cursor.classList.remove('is-hidden'); });
 
     $$('[data-magnetic]').forEach((el) => {
       el.addEventListener('pointermove', (e) => {
@@ -441,9 +442,11 @@
       e.preventDefault();
       opener = link;
       dialog.showModal();
+      root.classList.add('story-open');
       load(i);
     }));
     dialog.addEventListener('close', () => {
+      root.classList.remove('story-open');
       video.pause();
       video.removeAttribute('src');
       video.load(); // ferma anche lo scaricamento

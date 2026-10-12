@@ -118,7 +118,7 @@ ol, ul { padding: 0; list-style: none; }
 }
 
 .cursor { display: none; }
-.has-cursor .cursor { display: block; position: fixed; inset: 0; pointer-events: none; z-index: 95; }
+.has-cursor .cursor { display: block; position: fixed; inset: 0; pointer-events: none; z-index: 130; } /* sopra l'ingresso (120) */
 .has-cursor, .has-cursor a, .has-cursor button { cursor: none; }
 .has-cursor input, .has-cursor textarea, .has-cursor select { cursor: auto; }
 .cursor-dot, .cursor-ring { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
@@ -135,6 +135,10 @@ ol, ul { padding: 0; list-style: none; }
 .cursor.is-label .cursor-dot { opacity: 0; }
 .cursor.is-hidden { opacity: 0; }
 .cursor { transition: opacity .3s; }
+/* Il lettore video sta sopra a tutto: lì si usa il puntatore normale */
+.has-cursor .story, .has-cursor .story * { cursor: auto; }
+.has-cursor .story a, .has-cursor .story button { cursor: pointer; }
+.has-cursor.story-open .cursor { display: none; }
 
 /* ---------- Testata ---------- */
 .site-header {
