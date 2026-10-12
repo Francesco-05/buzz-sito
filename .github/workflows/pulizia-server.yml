@@ -1,0 +1,29 @@
+# Pulizia dei file del vecchio sito rimasti su Aruba (richiesta di Francesco del 12/10/2026).
+# Fase 1: solo elenco dei file sul server, nessuna modifica. Gira solo sul branch di lavoro, mai su main.
+name: Pulizia vecchi file su Aruba
+
+on:
+  push:
+    branches: [claude/project-thread-ipchkf]
+    paths: [.github/workflows/pulizia-server.yml]
+
+jobs:
+  pulizia:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Installa lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: Elenco dei file sul server (escluso il gestionale)
+        env:
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -u "14953727@aruba.it,$FTP_PASSWORD" ftplnx02.aruba.it -e "
+            set ftp:ssl-force true; set ftp:ssl-protect-data true; set net:max-retries 2; set net:timeout 20;
+            cls -la /www.buzzstudio.it/;
+            bye"
+          for d in _motion _next brand buzz-api fonts media privacy assets; do
+            lftp -u "14953727@aruba.it,$FTP_PASSWORD" ftplnx02.aruba.it -e "
+              set ftp:ssl-force true; set ftp:ssl-protect-data true; set net:max-retries 2; set net:timeout 20;
+              find -l /www.buzzstudio.it/$d/;
+              bye" | grep -v '/buzz-api/private/.' || true
+          done
