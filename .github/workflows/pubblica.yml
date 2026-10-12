@@ -1,0 +1,59 @@
+# Pubblica il sito su Aruba (www.buzzstudio.it) via FTPS. Attivata con l'ok di Francesco il 12/10/2026.
+# Parte da sola a ogni modifica approvata su "main", oppure a mano da GitHub → Actions → "Pubblica il sito su Aruba".
+# Carica solo i file del sito. Non tocca mai: app/ (il gestionale), buzz-api/private/ (impostazioni dei moduli), i video .mp4.
+# Al primo giro carica tutto e non cancella niente; poi cancella solo file che questo stesso strumento aveva caricato.
+name: Pubblica il sito su Aruba
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      prova:
+        description: "Solo prova (non carica nulla, mostra cosa cambierebbe)"
+        type: boolean
+        default: true
+
+concurrency:
+  group: pubblica-sito
+  cancel-in-progress: false
+
+jobs:
+  pubblica:
+    runs-on: ubuntu-latest
+    env:
+      HAS_FTP: ${{ secrets.FTP_PASSWORD != '' }}
+    steps:
+      - name: Credenziali FTP mancanti
+        if: env.HAS_FTP != 'true'
+        run: echo "::notice::Aggiungi il secret FTP_PASSWORD (password Aruba) per attivare la pubblicazione."
+
+      - uses: actions/checkout@v4
+        if: env.HAS_FTP == 'true'
+
+      - name: Controllo sintassi
+        if: env.HAS_FTP == 'true'
+        run: |
+          for f in index.php buzz-api/*.php; do php -l "$f"; done
+          for f in assets/js/*.js; do node --check "$f"; done
+
+      - name: Carica su Aruba
+        if: env.HAS_FTP == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          # ftplnx02.aruba.it è il nome scritto nel certificato FTPS di Aruba: così il certificato viene verificato.
+          server: ftplnx02.aruba.it
+          username: 14953727@aruba.it
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /www.buzzstudio.it/
+          protocol: ftps
+          security: strict
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.prova }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            CLAUDE.md
+            app/**
+            buzz-api/private/**
+            **/*.mp4

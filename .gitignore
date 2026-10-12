@@ -1,0 +1,5 @@
+# Video dei casi studio: pesanti, restano solo su Aruba (media/cases/*.mp4, media/influencer/*.mp4)
+*.mp4
+# Impostazioni e stato privati dei moduli: solo sul server, mai nel repository
+buzz-api/private/
+.DS_Store
