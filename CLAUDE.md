@@ -17,6 +17,12 @@ le modifiche in italiano semplice e chiedi conferma prima di pubblicare qualsias
 - `buzz-api/private/` — impostazioni segrete e stato dei moduli.
 - I video `.mp4` dei casi studio (troppo pesanti per GitHub).
 
+## Pubblicazione
+- `.github/workflows/pubblica.yml` carica il sito su Aruba via FTPS a ogni merge su `main` (attivato con l'ok di Francesco
+  il 12/10/2026). Unico secret: `FTP_PASSWORD` (password Aruba). Esclude `app/`, `buzz-api/private/` e i video.
+- I file tolti dal repository non vengono cancellati dal server: vanno rimossi a mano.
+- `backup-sito-2026-09-25` è il sito com'era online prima della nuova grafica.
+
 ## Regole
 - Nessuna pubblicazione senza il via esplicito di Francesco; lavora su un branch e apri una pull request.
 - Prima di proporre una modifica: provala su computer e telefono (Chromium è disponibile) e controlla che
