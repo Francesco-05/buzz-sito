@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /buzz-api/
+Sitemap: https://www.buzzstudio.it/sitemap.xml
