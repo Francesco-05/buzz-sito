@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <script src="https://embeds.iubenda.com/widgets/cc4f0625-e66b-4614-b7e0-e21f0d9e7564.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BUZZ — Content marketing. Rise your noise.</title>
+  <meta name="description" content="Strategia, ideazione, produzione e distribuzione di contenuti social. BUZZ costruisce la riconoscibilità del tuo brand, un contenuto alla volta.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:title" content="BUZZ — Rise your noise.">
+  <meta property="og:description" content="Un sistema di contenuti per costruire un brand riconoscibile.">
+  <meta property="og:url" content="https://www.buzzstudio.it/">
+  <meta property="og:site_name" content="BUZZ">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:image" content="https://www.buzzstudio.it/media/signal.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BUZZ — Rise your noise.">
+  <meta name="twitter:description" content="Un sistema di contenuti per costruire un brand riconoscibile.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="canonical" href="https://www.buzzstudio.it/">
+  <link rel="preload" href="/fonts/Anybody-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/sito.css?v=2026-10-12">
+  <script src="/assets/js/sito.js?v=2026-10-12" defer></script>
+  <script src="/assets/js/contatti.js?v=2026-10-12" defer></script>
+  <script src="/assets/js/candidature.js?v=2026-10-12" defer></script>
+</head>
+<body>
+  <!-- Icone usate in tutta la pagina -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10M7 17 17 7"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14m7-7-7 7-7-7"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor" stroke="none"/><path d="M16 9l5 6m0-6-5 6"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor is-hidden" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><b data-cursor-label></b></span></div>
+
+  <header class="site-header" id="inizio" data-header>
+    <a href="#inizio" class="brand" aria-label="BUZZ, torna all’inizio">
+      <img src="/brand/wordmark-light.svg" alt="BUZZ — Rise your noise" width="130" height="52">
+    </a>
+    <nav aria-label="Navigazione principale">
+      <a href="#metodo">Il metodo</a>
+      <a href="#progetti">I progetti</a>
+      <a class="nav-cta" href="#contatti" data-magnetic>Parliamone <svg class="ico"><use href="#i-up-right"/></svg></a>
+    </nav>
+  </header>
+
+  <main id="contenuto">
+
+    <!-- 00 · APERTURA -->
+    <section class="hero" aria-labelledby="hero-title" data-hero>
+      <div class="hero-sticky">
+        <div class="hero-art" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 700px)" srcset="/media/signal-mobile.webp">
+            <img src="/media/signal.webp" alt="" width="1536" height="1024" fetchpriority="high" data-hero-image>
+          </picture>
+          <canvas class="hero-waves" data-waves></canvas>
+          <div class="hero-vignette"></div>
+        </div>
+
+        <div class="hero-content shell" data-hero-content>
+          <p class="eyebrow"><span class="live-dot"></span> Content marketing studio</p>
+          <h1 id="hero-title" class="hero-title">
+            <span class="hero-intro" data-split>Il tuo brand.</span>
+            <span class="hero-line" data-split>Alza il</span>
+            <span class="hero-line hero-volume" data-volume-word>Volume.</span>
+          </h1>
+          <div class="hero-foot">
+            <p class="hero-description">Contenuti che costruiscono riconoscibilità.<br>Li studiamo, li creiamo, li portiamo alle persone giuste.</p>
+            <div class="hero-actions">
+              <a class="btn btn-light" href="#contatti" data-magnetic>Parliamo del tuo brand <svg class="ico"><use href="#i-up-right"/></svg></a>
+              <a class="link-arrow" href="#progetti">Guarda i progetti <svg class="ico"><use href="#i-down"/></svg></a>
+            </div>
+          </div>
+          <div class="meter" aria-hidden="true">
+            <span>Rise your noise.</span>
+            <div class="meter-bars" data-meter><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <span class="meter-value"><b data-meter-value>00</b> dB</span>
+          </div>
+        </div>
+
+        <div class="hero-bottom shell">
+          <span>Strategia + Contenuti + Direzione</span>
+          <a href="#partenza">Scopri il nostro approccio <svg class="ico"><use href="#i-down"/></svg></a>
+          <span class="scroll-hint" aria-hidden="true">Scroll <i></i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Striscia -->
+    <div class="ticker" aria-hidden="true" data-ticker>
+      <div class="ticker-track" data-ticker-track>
+        <span>Strategia</span><b>✳</b><span>Contenuti</span><b>✳</b><span>Riconoscibilità</span><b>✳</b><span>Buzz</span><b>✳</b>
+        <span>Strategia</span><b>✳</b><span>Contenuti</span><b>✳</b><span>Riconoscibilità</span><b>✳</b><span>Buzz</span><b>✳</b>
+        <span>Strategia</span><b>✳</b><span>Contenuti</span><b>✳</b><span>Riconoscibilità</span><b>✳</b><span>Buzz</span><b>✳</b>
+        <span>Strategia</span><b>✳</b><span>Contenuti</span><b>✳</b><span>Riconoscibilità</span><b>✳</b><span>Buzz</span><b>✳</b>
+      </div>
+    </div>
+
+    <!-- 01 · IN OTTIMA COMPAGNIA -->
+    <section class="proof shell" aria-labelledby="proof-title">
+      <div class="proof-head" data-reveal>
+        <p class="eyebrow">01 / In ottima compagnia</p>
+        <h2 id="proof-title" class="display">Parlano<br>i progetti.</h2>
+      </div>
+      <div class="proof-body">
+        <p data-reveal>Tre clienti, tre personalità. Il mondo food raccontato attraverso chi lo vive.</p>
+        <ol class="client-list" aria-label="Una selezione dei nostri progetti">
+          <li data-reveal><a href="#progetto-01" data-preview="/media/cases/scicchitano.webp"><span class="num">01</span><span class="name">Scicchitano</span><span class="tag">Cucina di mare</span><svg class="ico"><use href="#i-up-right"/></svg></a></li>
+          <li data-reveal><a href="#progetto-02" data-preview="/media/cases/trattoria-more.webp"><span class="num">02</span><span class="name">Trattoria Morè</span><span class="tag">Cucina partenopea</span><svg class="ico"><use href="#i-up-right"/></svg></a></li>
+          <li data-reveal><a href="#progetto-03" data-preview="/media/cases/vincenzo-capuano.webp"><span class="num">03</span><span class="name">Vincenzo Capuano</span><span class="tag">Pizza contemporanea</span><svg class="ico"><use href="#i-up-right"/></svg></a></li>
+        </ol>
+      </div>
+      <div class="client-preview" aria-hidden="true" data-preview-box><img alt="" width="720" height="1280"></div>
+    </section>
+
+    <!-- 02 · IL PUNTO DI PARTENZA -->
+    <section id="partenza" class="problem" aria-labelledby="problem-title" data-problem>
+      <div class="problem-sticky">
+        <img class="problem-mark" src="/brand/mark-light.svg" alt="" width="1340" height="1340" aria-hidden="true" data-problem-mark>
+        <div class="shell">
+          <p class="eyebrow">02 / Il punto di partenza</p>
+          <h2 id="problem-title" class="problem-title">
+            <span data-problem-line>Esserci</span>
+            <span data-problem-line>non basta.</span>
+            <span data-problem-line class="accent">Fatti ricordare.</span>
+          </h2>
+          <div class="problem-copy" data-problem-copy>
+            <p>La tua azienda ha qualcosa da dire.<br>Ma tra un post e l’altro, il messaggio si perde.</p>
+            <p class="muted">Per costruire riconoscibilità servono una direzione chiara, contenuti continuativi e la capacità di capire cosa funziona.</p>
+            <p class="problem-resolution"><svg class="ico"><use href="#i-right"/></svg> È qui che entra BUZZ.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · COME LAVORIAMO -->
+    <section id="metodo" class="method" aria-labelledby="method-title" data-method>
+      <div class="method-sticky">
+        <div class="method-head shell">
+          <div>
+            <p class="eyebrow">03 / Come lavoriamo</p>
+            <h2 id="method-title" class="display">Dal brief.<br><span class="accent">Al format.</span></h2>
+          </div>
+          <div class="method-side">
+            <p>Tu conosci il tuo brand.<br>Noi costruiamo il sistema per raccontarlo.</p>
+            <div class="method-counter" aria-hidden="true"><b data-method-number>01</b><span>/05</span></div>
+            <div class="method-rail" aria-hidden="true"><span data-method-fill></span></div>
+          </div>
+        </div>
+        <ol class="method-track" data-method-track>
+          <li class="step" data-step>
+            <span class="step-num">01</span>
+            <p class="step-label">Strategia</p>
+            <h3>Troviamo la direzione.</h3>
+            <p>Obiettivi, mercato, messaggi e frontman. Capiamo per cosa il tuo brand vuole essere riconosciuto.</p>
+          </li>
+          <li class="step" data-step>
+            <span class="step-num">02</span>
+            <p class="step-label">Ideazione</p>
+            <h3>Diamo forma alle idee.</h3>
+            <p>Concept, format e script. Pensiamo noi a cosa raccontare e a come renderlo interessante.</p>
+          </li>
+          <li class="step" data-step>
+            <span class="step-num">03</span>
+            <p class="step-label">Produzione</p>
+            <h3>Accendiamo le camere.</h3>
+            <p>Shooting ogni 14 giorni, riprese ed editing. La direzione diventa contenuto.</p>
+          </li>
+          <li class="step" data-step>
+            <span class="step-num">04</span>
+            <p class="step-label">Distribuzione</p>
+            <h3>Portiamo fuori la tua voce.</h3>
+            <p>Instagram, TikTok, Facebook e YouTube Shorts. Una presenza continuativa, sulle piattaforme giuste.</p>
+          </li>
+          <li class="step" data-step>
+            <span class="step-num">05</span>
+            <p class="step-label">Analisi e format</p>
+            <h3>Ascoltiamo. E ripartiamo.</h3>
+            <p>Studiamo la risposta del pubblico. Miglioriamo i contenuti e sviluppiamo i format da ripetere.</p>
+          </li>
+          <li class="step step-repeat" aria-hidden="true">
+            <span class="repeat-word">Repeat.</span>
+            <p>Ogni contenuto ci insegna qualcosa. Il ciclo ricomincia.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 04 · I CASI STUDIO -->
+    <section id="progetti" class="cases" aria-labelledby="projects-title">
+      <div class="shell cases-head" data-reveal>
+        <p class="eyebrow">04 / I casi studio <span class="eyebrow-side">Persone. Storie. Contenuti.</span></p>
+        <h2 id="projects-title" class="display">Il lavoro<br><span class="accent">si vede.</span></h2>
+        <p>Tre identità riconoscibili.<br>Tre modi di farle incontrare alle persone.</p>
+      </div>
+
+      <article class="case" id="progetto-01" data-case>
+        <div class="case-bg" aria-hidden="true"><img src="/media/cases/scicchitano.webp" alt="" loading="lazy" width="720" height="1280"></div>
+        <div class="case-inner shell">
+          <header class="case-head">
+            <p class="eyebrow"><span>01 /</span> Cucina di mare</p>
+            <h3 class="case-name" data-case-name>Scicchitano</h3>
+            <p class="case-context">La cucina di mare di Giuseppe Scicchitano, a Napoli.</p>
+          </header>
+          <a class="case-film" href="/media/cases/scicchitano.mp4" data-story="0" data-cursor="Guarda" aria-label="Guarda il video di Scicchitano: Astice blu, noci e nocciole (1:37)">
+            <img src="/media/cases/scicchitano.webp" alt="Giuseppe Scicchitano in cucina con l’astice blu" loading="lazy" width="720" height="1280">
+            <span class="case-play"><svg class="ico"><use href="#i-play"/></svg></span>
+            <span class="case-film-caption"><span>Astice blu, noci e nocciole</span><span>1:37</span></span>
+          </a>
+          <div class="case-text">
+            <p class="case-title">Il carattere di una cucina. Davanti alla camera.</p>
+            <p>Astice blu, noci e nocciole: ingredienti e preparazione diventano un racconto in prima persona, direttamente dalla cucina.</p>
+            <ul class="case-points">
+              <li>Il protagonista in camera</li>
+              <li>Il prodotto in primo piano</li>
+              <li>Il racconto della preparazione</li>
+            </ul>
+            <a class="link-arrow" href="https://www.instagram.com/scicchitano_napoli/" target="_blank" rel="noopener noreferrer" aria-label="Profilo Instagram di Scicchitano, apre una nuova scheda">@scicchitano_napoli <svg class="ico"><use href="#i-up-right"/></svg></a>
+          </div>
+          <figure class="case-detail" data-parallax="0.18">
+            <img src="/media/cases/scicchitano-detail.webp" alt="Paccheri con astice, noci e nocciole" loading="lazy" width="720" height="1280">
+            <figcaption>Questione di carattere.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="case case-dark" id="progetto-02" data-case>
+        <div class="case-bg" aria-hidden="true"><img src="/media/cases/trattoria-more.webp" alt="" loading="lazy" width="720" height="1280"></div>
+        <div class="case-inner shell">
+          <header class="case-head">
+            <p class="eyebrow"><span>02 /</span> Cucina partenopea</p>
+            <h3 class="case-name" data-case-name>Trattoria Morè</h3>
+            <p class="case-context">Storie e sapori di Napoli, nei Quartieri Spagnoli.</p>
+          </header>
+          <a class="case-film" href="/media/cases/trattoria-more.mp4" data-story="1" data-cursor="Guarda" aria-label="Guarda il video di Trattoria Morè: Gnocchi mantecati nella forma di grana Bellalodi (0:31)">
+            <img src="/media/cases/trattoria-more.webp" alt="Gnocchi mantecati nella forma di grana alla Trattoria Morè" loading="lazy" width="720" height="1280">
+            <span class="case-play"><svg class="ico"><use href="#i-play"/></svg></span>
+            <span class="case-film-caption"><span>Gnocchi mantecati nella forma di grana Bellalodi</span><span>0:31</span></span>
+          </a>
+          <div class="case-text">
+            <p class="case-title">Una preparazione che si fa guardare.</p>
+            <p>Gli gnocchi vengono mantecati nella forma di grana Bellalodi. La preparazione, il formaggio filante e l’assaggio portano il piatto al centro del video.</p>
+            <ul class="case-points">
+              <li>La mantecatura nella forma</li>
+              <li>Il dettaglio del piatto</li>
+              <li>L’assaggio in camera</li>
+            </ul>
+            <a class="link-arrow" href="https://www.instagram.com/trattoria_more/" target="_blank" rel="noopener noreferrer" aria-label="Profilo Instagram di Trattoria Morè, apre una nuova scheda">@trattoria_more <svg class="ico"><use href="#i-up-right"/></svg></a>
+          </div>
+          <figure class="case-detail" data-parallax="0.18">
+            <img src="/media/cases/trattoria-more-detail.webp" alt="Gnocchi al pomodoro con il formaggio filante" loading="lazy" width="720" height="1280">
+            <figcaption>Tutto passa dal gesto.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="case case-violet" id="progetto-03" data-case>
+        <div class="case-bg" aria-hidden="true"><img src="/media/cases/vincenzo-capuano.webp" alt="" loading="lazy" width="720" height="1280"></div>
+        <div class="case-inner shell">
+          <header class="case-head">
+            <p class="eyebrow"><span>03 /</span> Pizza contemporanea</p>
+            <h3 class="case-name" data-case-name>Vincenzo Capuano</h3>
+            <p class="case-context">Pizzaiolo di terza generazione, interprete della pizza napoletana contemporanea.</p>
+          </header>
+          <a class="case-film" href="/media/cases/vincenzo-capuano.mp4" data-story="2" data-cursor="Guarda" aria-label="Guarda il video di Vincenzo Capuano: Come nasce il mio impasto contemporaneo (1:30)">
+            <img src="/media/cases/vincenzo-capuano.webp" alt="Vincenzo Capuano mentre lavora l’impasto" loading="lazy" width="720" height="1280">
+            <span class="case-play"><svg class="ico"><use href="#i-play"/></svg></span>
+            <span class="case-film-caption"><span>Come nasce il mio impasto contemporaneo</span><span>1:30</span></span>
+          </a>
+          <div class="case-text">
+            <p class="case-title">Il sapere di un pizzaiolo diventa contenuto.</p>
+            <p>Dalla farina all’impasto, fino alla pizza: Vincenzo Capuano racconta la sua lavorazione, mostrando gesti, consistenze e risultato finale.</p>
+            <ul class="case-points">
+              <li>Il racconto in prima persona</li>
+              <li>La lavorazione dell’impasto</li>
+              <li>La pizza appena sfornata</li>
+            </ul>
+            <a class="link-arrow" href="https://www.instagram.com/capvin/" target="_blank" rel="noopener noreferrer" aria-label="Profilo Instagram di Vincenzo Capuano, apre una nuova scheda">@capvin <svg class="ico"><use href="#i-up-right"/></svg></a>
+          </div>
+          <figure class="case-detail" data-parallax="0.18">
+            <img src="/media/cases/vincenzo-capuano-detail.webp" alt="Le mani di Vincenzo Capuano nell’impasto" loading="lazy" width="720" height="1280">
+            <figcaption>Le mani raccontano.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- 05 · L'OFFERTA -->
+    <section id="offerta" class="offer" aria-labelledby="offer-title">
+      <div class="shell offer-inner">
+        <div class="offer-main" data-reveal>
+          <p class="eyebrow">05 / Una sola offerta. Tutto il sistema.</p>
+          <h2 id="offer-title" class="display offer-title">Buzz<br><span class="accent">Content</span><br>System.</h2>
+          <p class="offer-description">Una presenza che prende forma nel tempo.<br>Un team che si occupa dell’intero percorso.</p>
+          <a class="btn btn-light" href="#contatti" data-magnetic>Costruiamo il tuo percorso <svg class="ico"><use href="#i-up-right"/></svg></a>
+        </div>
+        <div class="offer-details">
+          <div class="offer-count" data-reveal aria-label="12 contenuti originali al mese">
+            <b data-count-to="12">12</b>
+            <span>contenuti originali<br>al mese</span>
+          </div>
+          <p class="eyebrow">Il sistema comprende</p>
+          <ul class="offer-list">
+            <li data-reveal><svg class="ico"><use href="#i-plus"/></svg>Strategia e direzione iniziale</li>
+            <li data-reveal><svg class="ico"><use href="#i-plus"/></svg>Ideazione, script e sviluppo format</li>
+            <li data-reveal><svg class="ico"><use href="#i-plus"/></svg>Shooting ogni 14 giorni ed editing</li>
+            <li data-reveal><svg class="ico"><use href="#i-plus"/></svg>12 contenuti originali al mese</li>
+            <li data-reveal><svg class="ico"><use href="#i-plus"/></svg>Distribuzione su 4 piattaforme</li>
+            <li data-reveal><svg class="ico"><use href="#i-plus"/></svg>Analisi e ottimizzazione continua</li>
+          </ul>
+          <p class="platforms" aria-label="Piattaforme"><span>Instagram</span><span>TikTok</span><span>Facebook</span><span>YouTube Shorts</span></p>
+          <div class="duration" data-reveal>
+            <div><strong>3 mesi</strong><span>Il percorso minimo</span></div>
+            <div class="duration-line" aria-hidden="true"><span></span></div>
+            <div><strong>6–12 mesi</strong><span>L’orizzonte consigliato</span></div>
+          </div>
+          <p class="offer-note">Costruiamo continuità. Impariamo dai dati. Diamo spazio ai format migliori.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · CONTATTI -->
+    <section id="contatti" class="contact" data-contact-section aria-labelledby="contact-title">
+      <div class="shell">
+        <div class="contact-switch-row">
+          <span class="eyebrow">Il prossimo passo, insieme.</span>
+          <div class="contact-switch" role="tablist" aria-label="Scegli come contattare BUZZ">
+            <button type="button" role="tab" id="brand-tab" aria-controls="brand-panel" aria-selected="true" data-contact-mode="brand">Parliamo del tuo brand</button>
+            <button type="button" role="tab" id="careers-tab" aria-controls="careers-panel" aria-selected="false" tabindex="-1" data-contact-mode="careers">Lavora con noi <svg class="ico"><use href="#i-up-right"/></svg></button>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-copy" data-contact-copy="brand">
+            <p class="eyebrow">06 / Il prossimo brand potrebbe essere il tuo.</p>
+            <h2 id="contact-title" class="display contact-title">Facciamo<br><span class="accent">Buzz.</span></h2>
+            <p>Raccontaci chi sei e dove vuoi arrivare.<br>Partiamo da qui per capire come lavorare insieme.</p>
+            <div class="contact-brand" aria-hidden="true">
+              <img src="/brand/mark-dark.svg" alt="" width="160" height="160" data-spin>
+              <span>One source.<br>Many waves.<br><strong>Your brand.</strong></span>
+            </div>
+          </div>
+
+          <div class="contact-copy" data-contact-copy="careers" hidden>
+            <p class="eyebrow">06 / Cerchiamo nuove voci.</p>
+            <h2 id="careers-title" class="display contact-title">Fai sentire<br>il tuo<br><span class="accent">talento.</span></h2>
+            <p>Le idee fanno rumore. Le persone fanno BUZZ.<br>Stiamo cercando chi ha voglia di creare insieme a noi.</p>
+            <ul class="roles" aria-label="Ruoli ricercati">
+              <li><button type="button" data-careers-role="Content Creator" aria-label="Candidati come Content Creator"><span>01</span>Content Creator<svg class="ico"><use href="#i-up-right"/></svg></button></li>
+              <li><button type="button" data-careers-role="Videomaker" aria-label="Candidati come Videomaker"><span>02</span>Videomaker<svg class="ico"><use href="#i-up-right"/></svg></button></li>
+              <li><button type="button" data-careers-role="Graphic Designer" aria-label="Candidati come Graphic Designer"><span>03</span>Graphic Designer<svg class="ico"><use href="#i-up-right"/></svg></button></li>
+            </ul>
+            <p class="location"><span aria-hidden="true"></span>In presenza in Campania</p>
+          </div>
+
+          <div id="brand-panel" class="contact-panel" role="tabpanel" aria-labelledby="brand-tab" tabindex="0">
+            <form class="form" data-buzz-form data-contact-endpoint="/buzz-api/contact.php" data-contact-ready="true" aria-label="Raccontaci il tuo brand" action="/buzz-api/contact.php" method="post">
+              <div class="form-top"><span>Il tuo prossimo passo</span><span>01 / Parliamone</span></div>
+              <div class="form-grid">
+                <div class="field">
+                  <input id="name" name="name" autocomplete="name" placeholder=" " required minlength="2" maxlength="100">
+                  <label for="name">Come ti chiami? <span>*</span></label>
+                </div>
+                <div class="field">
+                  <input id="company" name="company" autocomplete="organization" placeholder=" " required minlength="2" maxlength="150">
+                  <label for="company">Il tuo brand <span>*</span></label>
+                </div>
+                <div class="field">
+                  <input id="email" name="email" type="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder=" " required maxlength="190">
+                  <label for="email">La tua email <span>*</span></label>
+                </div>
+                <div class="field">
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder=" " required minlength="5" maxlength="35">
+                  <label for="phone">Telefono <span>*</span></label>
+                </div>
+                <div class="field field-full">
+                  <input id="website" name="website" autocapitalize="none" spellcheck="false" placeholder=" " required maxlength="300">
+                  <label for="website">Dove possiamo conoscerti? Sito o profilo social <span>*</span></label>
+                </div>
+                <div class="field field-full">
+                  <textarea id="objective" name="objective" placeholder=" " required minlength="10" maxlength="2000" rows="3"></textarea>
+                  <label for="objective">Cosa vuoi ottenere dai social? <span>*</span></label>
+                </div>
+              </div>
+              <div class="form-trap" aria-hidden="true">
+                <label for="fax">Lascia vuoto questo campo</label><input id="fax" name="fax" tabindex="-1" autocomplete="off">
+              </div>
+              <p class="form-privacy">Useremo i tuoi dati per rispondere alla richiesta. <a href="/privacy/" target="_blank" rel="noopener noreferrer">Leggi l’informativa privacy</a></p>
+              <button class="btn btn-violet form-submit" type="submit" disabled data-magnetic><span data-submit-label>Parliamo del tuo brand</span><svg class="ico"><use href="#i-up-right"/></svg></button>
+              <div class="form-feedback" aria-live="polite" aria-atomic="true"></div>
+              <noscript><p class="form-privacy">Abilita JavaScript per usare il modulo di contatto, oppure scrivici a <a href="mailto:info@buzzstudio.it">info@buzzstudio.it</a>.</p></noscript>
+              <p class="form-required">* Tutti i campi sono obbligatori.</p>
+            </form>
+          </div>
+
+          <div id="careers-panel" class="contact-panel" role="tabpanel" aria-labelledby="careers-tab" tabindex="0" hidden>
+            <form class="form" data-careers-form data-careers-endpoint="/buzz-api/careers.php" aria-label="Invia la tua candidatura" action="/buzz-api/careers.php" method="post">
+              <div class="form-top"><span>Il tuo prossimo passo</span><span>Entra nel team</span></div>
+              <p class="form-intro">Mostraci cosa sai fare. Partiamo dai tuoi lavori.</p>
+              <div class="form-grid">
+                <div class="field">
+                  <input id="career-name" name="name" autocomplete="name" placeholder=" " required minlength="2" maxlength="100">
+                  <label for="career-name">Nome e cognome <span>*</span></label>
+                </div>
+                <div class="field field-select">
+                  <select id="career-role" name="role" required>
+                    <option value="" disabled selected>Scegli il tuo ruolo</option>
+                    <option>Content Creator</option>
+                    <option>Videomaker</option>
+                    <option>Graphic Designer</option>
+                  </select>
+                  <label for="career-role">Il tuo ruolo <span>*</span></label>
+                </div>
+                <div class="field">
+                  <input id="career-email" name="email" type="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder=" " required maxlength="190">
+                  <label for="career-email">La tua email <span>*</span></label>
+                </div>
+                <div class="field">
+                  <input id="career-phone" name="phone" type="tel" autocomplete="tel" placeholder=" " required minlength="5" maxlength="35">
+                  <label for="career-phone">Telefono <span>*</span></label>
+                </div>
+                <div class="field field-full">
+                  <input id="career-city" name="city" autocomplete="address-level2" placeholder=" " required minlength="2" maxlength="120" aria-describedby="career-location-hint">
+                  <label for="career-city">Città e provincia <span>*</span></label>
+                  <p id="career-location-hint" class="hint">Cerchiamo persone per lavorare in presenza in Campania. Es. Salerno (SA)</p>
+                </div>
+                <div class="field field-full">
+                  <input id="career-portfolio" name="portfolio" type="url" inputmode="url" autocapitalize="none" spellcheck="false" placeholder=" " required maxlength="500" aria-describedby="career-portfolio-hint">
+                  <label for="career-portfolio">Facci vedere i tuoi lavori <span>*</span></label>
+                  <p id="career-portfolio-hint" class="hint">Portfolio, reel o profilo social. Assicurati che il link sia accessibile.</p>
+                </div>
+                <div class="field field-full">
+                  <textarea id="career-presentation" name="presentation" placeholder=" " required minlength="10" maxlength="2000" rows="3"></textarea>
+                  <label for="career-presentation">Due parole su di te <span>*</span></label>
+                </div>
+              </div>
+              <div class="form-trap" aria-hidden="true">
+                <label for="career-fax">Lascia vuoto questo campo</label><input id="career-fax" name="fax" tabindex="-1" autocomplete="off">
+              </div>
+              <p class="form-privacy">Useremo i tuoi dati per valutare la candidatura e ricontattarti. <a href="/privacy/#candidature" target="_blank" rel="noopener noreferrer">Leggi l’informativa privacy</a></p>
+              <button class="btn btn-violet form-submit" type="submit" disabled data-magnetic><span data-careers-submit-label>Invia la candidatura</span><svg class="ico"><use href="#i-up-right"/></svg></button>
+              <div class="form-feedback" aria-live="polite" aria-atomic="true"></div>
+              <noscript><p class="form-privacy">Per usare il modulo abilita JavaScript. Puoi anche scriverci a <a href="mailto:info@buzzstudio.it">info@buzzstudio.it</a>, indicando il ruolo e un link ai tuoi lavori.</p></noscript>
+              <p class="form-required">* Tutti i campi sono obbligatori.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-footer>
+    <div class="shell">
+      <div class="footer-top">
+        <img class="footer-mark" src="/brand/mark-dark.svg" alt="" width="80" height="80" aria-hidden="true" data-spin>
+        <p>Una voce tua.<br>Un segno che resta.</p>
+        <a class="link-arrow" href="#inizio">Torna su <svg class="ico"><use href="#i-up-right"/></svg></a>
+      </div>
+      <a href="#inizio" class="footer-wordmark" aria-label="BUZZ, torna all’inizio" data-footer-wordmark>
+        <img src="/brand/wordmark-light.svg" alt="" width="1300" height="520" loading="lazy">
+      </a>
+      <div class="footer-bottom">
+        <span>© 2026 BUZZ</span>
+        <span class="accent">Rise your noise.</span>
+        <a href="?percorso=lavora-con-noi#contatti" data-careers-link>Lavora con noi</a>
+        <a href="/privacy/">Privacy e cookie</a>
+      </div>
+      <div class="footer-legal">
+        <p>HLYM GROUP DI D’ACUNZO ELIODORO · P. IVA 06397690659</p>
+        <p>Viale Kennedy 44, 84012 Angri (SA), Italia</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Ingresso: compare solo alla prima visita della sessione -->
+  <div class="gate" data-gate hidden>
+    <div class="gate-inner">
+      <img src="/brand/wordmark-light.svg" alt="BUZZ — Rise your noise" width="130" height="52">
+      <p class="gate-title" id="gate-title">Alza il<br><span>volume.</span></p>
+      <button type="button" class="gate-knob" data-gate-knob aria-describedby="gate-title">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54" class="gate-track"/><circle cx="60" cy="60" r="54" class="gate-fill" data-gate-fill/></svg>
+        <span class="gate-value"><b data-gate-value>00</b></span>
+        <span class="gate-label">Tieni premuto</span>
+      </button>
+      <button type="button" class="gate-skip" data-gate-skip>Entra subito <svg class="ico"><use href="#i-up-right"/></svg></button>
+    </div>
+    <div class="gate-bars" aria-hidden="true" data-gate-bars></div>
+  </div>
+
+  <!-- Lettore video a tutto schermo, stile storie -->
+  <dialog class="story" data-story-dialog aria-label="Video dei casi studio">
+    <div class="story-progress" aria-hidden="true"><span data-story-bar></span></div>
+    <div class="story-top">
+      <div>
+        <p class="story-client" data-story-client></p>
+        <p class="story-caption" data-story-caption></p>
+      </div>
+      <button type="button" class="story-btn" data-story-close aria-label="Chiudi il video"><svg class="ico"><use href="#i-close"/></svg></button>
+    </div>
+    <video class="story-video" playsinline preload="none" data-story-video></video>
+    <div class="story-controls">
+      <button type="button" class="story-btn" data-story-prev aria-label="Video precedente"><svg class="ico"><use href="#i-left"/></svg></button>
+      <button type="button" class="story-btn" data-story-sound aria-label="Attiva l’audio"><svg class="ico"><use href="#i-mute"/></svg></button>
+      <a class="story-ig" data-story-ig target="_blank" rel="noopener noreferrer"></a>
+      <button type="button" class="story-btn" data-story-next aria-label="Video successivo"><svg class="ico"><use href="#i-next"/></svg></button>
+    </div>
+  </dialog>
+</body>
+</html>
