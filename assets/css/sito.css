@@ -209,13 +209,7 @@ ol, ul { padding: 0; list-style: none; }
 .hero-intro { font-size: clamp(16px, 1.6vw, 24px); font-weight: 700; font-stretch: 100%; letter-spacing: .02em; margin-bottom: .9em; }
 .hero-line, .hero-volume { font-size: clamp(54px, 11.6vw, 210px); font-stretch: 150%; }
 .hero-line { padding-left: 0; }
-.hero-volume {
-  padding-left: clamp(30px, 6vw, 120px);
-  font-stretch: var(--vol-stretch, 150%);
-  font-weight: var(--vol-weight, 900);
-  color: var(--paper);
-  text-shadow: 0 0 calc(var(--vol-glow, 0) * 60px) rgba(108, 59, 255, .9);
-}
+.hero-volume { padding-left: clamp(30px, 6vw, 120px); color: var(--paper); }
 .hero-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px; max-width: 980px; }
 .hero-description { max-width: 440px; color: #d9d4e2; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
@@ -621,7 +615,11 @@ ol, ul { padding: 0; list-style: none; }
 .gate-inner { position: relative; z-index: 2; display: grid; justify-items: center; gap: clamp(24px, 4vh, 42px); text-align: center; padding: 24px; }
 .gate-inner > img { width: 110px; }
 .gate-title { text-transform: uppercase; font-weight: 900; font-stretch: 150%; line-height: .86; font-size: clamp(48px, 11vw, 168px); }
-.gate-title span { color: var(--violet); font-stretch: calc(60% + var(--gate, 0) * 90%); }
+/* "VOLUME." si riempie di viola da sinistra a destra mentre si tiene premuto, come una barra del volume */
+.gate-title span {
+  color: transparent; -webkit-background-clip: text; background-clip: text;
+  background-image: linear-gradient(90deg, var(--violet) calc(var(--gate, 0) * 100%), rgba(255, 255, 255, .16) calc(var(--gate, 0) * 100%));
+}
 .gate-knob { position: relative; width: 150px; height: 150px; border-radius: 50%; display: grid; place-items: center; touch-action: none; user-select: none; -webkit-user-select: none; }
 .gate-knob svg { position: absolute; inset: 0; transform: rotate(-90deg); }
 .gate-track, .gate-fill { fill: none; stroke-width: 4; }
@@ -650,6 +648,9 @@ ol, ul { padding: 0; list-style: none; }
 .js [data-split] .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .04em; }
 .js [data-split] .w > span { display: inline-block; transform: translateY(105%); transition: transform 1.1s var(--ease); transition-delay: calc(var(--i) * 70ms + 150ms); }
 .js .is-ready [data-split] .w > span, .js.is-ready [data-split] .w > span { transform: none; }
+.js [data-split-letters] .l { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .04em; }
+.js [data-split-letters] .l > span { display: inline-block; transform: translateY(105%); transition: transform 1s var(--ease); transition-delay: calc(var(--i) * 55ms + 380ms); }
+.js.is-ready [data-split-letters] .l > span { transform: none; }
 
 /* =========================================================================
    MOVIMENTO RIDOTTO: chi lo chiede nelle impostazioni vede tutto fermo e leggibile
@@ -662,7 +663,7 @@ ol, ul { padding: 0; list-style: none; }
   .problem-sticky { position: relative; height: auto; min-height: 100vh; padding-block: 120px; background: var(--violet); }
   .problem-title span { opacity: 1; font-stretch: 150%; transform: none; }
   .problem-copy { opacity: 1; transform: none; }
-  .js [data-reveal], .js [data-split] .w > span { opacity: 1; transform: none; }
+  .js [data-reveal], .js [data-split] .w > span, .js [data-split-letters] .l > span { opacity: 1; transform: none; }
   .case-name { clip-path: none; font-stretch: 150%; }
   .grain { display: none; }
 }

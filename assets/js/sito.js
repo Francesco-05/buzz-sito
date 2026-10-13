@@ -31,6 +31,12 @@
     el.setAttribute('aria-label', el.textContent.trim());
     el.innerHTML = words.map((w, i) => `<span class="w" aria-hidden="true"><span style="--i:${i}">${w}</span></span>`).join(' ');
   });
+  // "VOLUME.": le lettere salgono una dopo l'altra, subito dopo "Alza il"
+  $$('[data-split-letters]').forEach((el) => {
+    const text = el.textContent.trim();
+    el.setAttribute('aria-label', text);
+    el.innerHTML = [...text].map((c, i) => `<span class="l" aria-hidden="true"><span style="--i:${i}">${c}</span></span>`).join('');
+  });
 
   const markReady = () => requestAnimationFrame(() => root.classList.add('is-ready'));
 
@@ -174,7 +180,6 @@
     const ctx = canvas.getContext('2d');
     const meterBars = $$('[data-meter] i', hero);
     const meterValue = $('[data-meter-value]', hero);
-    const volumeWord = $('[data-volume-word]', hero);
     let heroP = 0, px = 0, py = 0;
 
     const sizeCanvas = () => {
@@ -227,9 +232,6 @@
 
       const k = reducedMotion ? 1 : clamp((t - volStart) / 1600);
       const eased = 1 - Math.pow(1 - k, 4);
-      volumeWord.style.setProperty('--vol-stretch', `${(55 + eased * 95).toFixed(1)}%`);
-      volumeWord.style.setProperty('--vol-weight', String(Math.round(300 + eased * 600)));
-      volumeWord.style.setProperty('--vol-glow', (state.energy * 0.8).toFixed(3));
 
       meterBars.forEach((bar, i) => {
         const n = 0.5 + 0.5 * Math.sin(t * 0.004 + i * 0.9) * Math.cos(t * 0.0023 + i * 0.4);
