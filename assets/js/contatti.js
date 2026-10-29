@@ -19,8 +19,22 @@
     if (kind === 'error') paragraph.setAttribute('role', 'alert');
     feedback.replaceChildren(paragraph);
   }
+  // Same rule as buzz-api/contact.php: an Italian mobile has 9-10 digits and starts with 3, a landline starts with 0;
+  // foreign numbers need the international prefix. A missing digit is the usual reason a contact cannot be reached.
+  const phone = form.querySelector('[name="phone"]');
+  const phoneMessage = 'Controlla il numero: un cellulare italiano ha 10 cifre (es. 333 123 4567).';
+  function phoneLooksRight(value) {
+    let digits = value.replace(/\D/g, '');
+    const international = /^\s*(\+|00)/.test(value);
+    if (digits.startsWith('00')) digits = digits.slice(2);
+    if (international && !digits.startsWith('39')) return digits.length >= 8 && digits.length <= 15;
+    if (international || (digits.startsWith('39') && digits.length > 10)) digits = digits.slice(2);
+    return /^3\d{8,9}$/.test(digits) || /^0\d{5,10}$/.test(digits);
+  }
+  if (phone) phone.addEventListener('input', () => phone.setCustomValidity(''));
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (phone) phone.setCustomValidity(phone.value.trim() === '' || phoneLooksRight(phone.value) ? '' : phoneMessage);
     if (pending?.needsVerification) {
       show(verificationMessage, 'error');
       return;
@@ -79,7 +93,7 @@
       } else {
         form.reset();
         label.textContent = 'Richiesta ricevuta';
-        show('Grazie! La tua richiesta è arrivata. Il team BUZZ ti contatterà per parlare del progetto.', 'success');
+        show('Grazie! La tua richiesta è arrivata. Ti scriviamo a breve su WhatsApp: controlla anche la tua email.', 'success');
       }
     } catch {
       if (!posted) pending = null;

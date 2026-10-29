@@ -9,7 +9,10 @@ header('Referrer-Policy: no-referrer');
 
 function buzzReply(int $status, array $body): void {
     http_response_code($status);
-    echo json_encode($body, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $json = (string)json_encode($body, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    // A known length lets the browser close the request before the alerts in buzzAfterReply() run.
+    header('Content-Length: ' . strlen($json));
+    echo $json;
     exit;
 }
 function buzzField(array $input, string $name, int $min, int $max): string {
@@ -31,20 +34,52 @@ function buzzValidate(array $input): array {
         $fields[$name] = buzzField($input, $name, $limits[0], $limits[1]);
     }
     if (!filter_var($fields['email'], FILTER_VALIDATE_EMAIL)) throw new InvalidArgumentException('Controlla l’indirizzo email.');
-    if (!preg_match('/^[+0-9().\s-]{5,35}$/', $fields['phone'])) throw new InvalidArgumentException('Controlla il numero di telefono.');
+    if (!preg_match('/^[+0-9().\s-]{5,35}$/', $fields['phone']) || !buzzPhoneLooksRight($fields['phone'])) {
+        throw new InvalidArgumentException('Controlla il numero: un cellulare italiano ha 10 cifre (es. 333 123 4567).');
+    }
     return $fields;
 }
-function buzzSave(PDO $db, array $fields, string $requestId): bool {
+/** Same rule as assets/js/contatti.js: Italian mobile (3 + 8-9 digits) or landline (0...), foreign numbers with the prefix. */
+function buzzPhoneLooksRight(string $phone): bool {
+    $digits = preg_replace('/\D+/', '', $phone) ?? '';
+    $international = (bool)preg_match('/^\s*(\+|00)/', $phone);
+    if (str_starts_with($digits, '00')) $digits = substr($digits, 2);
+    if ($international && !str_starts_with($digits, '39')) return strlen($digits) >= 8 && strlen($digits) <= 15;
+    if ($international || (str_starts_with($digits, '39') && strlen($digits) > 10)) $digits = substr($digits, 2);
+    return (bool)preg_match('/^3\d{8,9}$/', $digits) || (bool)preg_match('/^0\d{5,10}$/', $digits);
+}
+/** Returns the new lead id (0 when the request was already saved). */
+function buzzSave(PDO $db, array $fields, string $requestId): int {
     $sourceDetail = 'buzzstudio.it | ' . $requestId;
     $find = $db->prepare('SELECT id FROM leads WHERE source = ? AND source_detail = ? LIMIT 1');
     $find->execute(['Sito web', $sourceDetail]);
-    if ($find->fetchColumn()) return false;
+    if ($find->fetchColumn()) return 0;
     $notes = "Richiesta dal sito BUZZ\n\n" . $fields['objective'];
     if ($fields['website'] !== '') $notes .= "\n\nSito / social: " . $fields['website'];
     $notes .= "\n\nInformativa: https://www.buzzstudio.it/privacy/ (10-09-2026)";
     $query = $db->prepare('INSERT INTO leads (business_name,contact_name,email,phone,service,status,source,source_detail,notes,priority,next_contact) VALUES (?,?,?,?,?,?,?,?,?,?,CURDATE())');
     $query->execute([$fields['company'], $fields['name'], $fields['email'], $fields['phone'] ?: null, 'BUZZ Content System', 'nuovo contatto', 'Sito web', $sourceDetail, $notes, 'media']);
-    return true;
+    return (int)$db->lastInsertId();
+}
+/**
+ * After the visitor has the answer: the management app alerts the team and sends the first email
+ * (app/includes/contatti_sito.php, from version 10.120.0). Skipped when that file is not on the server yet.
+ */
+function buzzAfterReply(PDO $db, int $leadId): void {
+    $hook = dirname(__DIR__) . '/app/includes/contatti_sito.php';
+    if ($leadId <= 0 || !is_file($hook)) return;
+    register_shutdown_function(static function () use ($db, $leadId, $hook): void {
+        ignore_user_abort(true);
+        if (function_exists('fastcgi_finish_request')) @fastcgi_finish_request();
+        elseif (function_exists('litespeed_finish_request')) @litespeed_finish_request();
+        else { while (ob_get_level() > 0) @ob_end_flush(); @flush(); }
+        try {
+            require_once $hook;
+            if (function_exists('oftSiteLeadArrived')) oftSiteLeadArrived($db, $leadId);
+        } catch (Throwable $e) {
+            error_log('BUZZ contact alert: ' . get_class($e));
+        }
+    });
 }
 
 // Only the temporary deployment verification runner defines this constant.
@@ -108,7 +143,7 @@ try {
         }
         $db->beginTransaction();
         try {
-            buzzSave($db, $fields, $requestId);
+            $leadId = buzzSave($db, $fields, $requestId);
             $bucket['count']++;
             $state['ips'][$ipKey] = $bucket;
             $state['total']++;
@@ -124,6 +159,7 @@ try {
         flock($handle, LOCK_UN);
         fclose($handle);
     }
+    buzzAfterReply($db, $leadId);
     buzzReply(200, ['ok'=>true]);
 } catch (InvalidArgumentException $e) {
     buzzReply(422, ['ok'=>false, 'message'=>$e->getMessage()]);
